@@ -33,7 +33,7 @@ Algunas de sus características principales son:
 #### Compilación (sin Makefile)
 Para compilación 
 ```
-gcc -Wall -Wextra src/main.c src/navegacion.c src/Comando_personalizado.c src/Comando_pipes.c -o main 
+gcc src/main.c -o main 
 ```
 Para ejecución 
 ```

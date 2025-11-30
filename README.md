@@ -45,13 +45,22 @@ Ejecutar el simulador (compila automáticamente si es necesario):
 ```bash
 make run-sim ARGS="<Nmarcos> <tamaño_página> [--verbose] <ruta_traza>"
 # ejemplo:
-make run-sim ARGS="8 4096 simulador/trace2.txt"
+make run-sim ARGS="8 4096 trace2.txt"
 ```
 
 Ejecutar la barrera:
 ```bash
 make run-barrera ARGS="<args_para_barrera>"
 ```
+
+Ejecutar todas las pruebas automatizadas:
+```bash
+make test
+```
+
+Este objetivo ejecuta el simulador con diferentes configuraciones:
+- **trace1.txt** (tamaño de marco: 8 bytes): 8, 16, 32 marcos
+- **trace2.txt** (tamaño de marco: 4096 bytes): 8, 16, 32 marcos
 
 Limpiar binarios generados:
 ```bash
@@ -61,13 +70,20 @@ make clean
 #### Ejemplos rápidos
 - Ejecutar simulador con 8 marcos y tamaño de página 4096:
 ```bash
-make run-sim ARGS="8 4096 simulador/trace2.txt"
+make run-sim ARGS="8 4096 trace2.txt"
 ```
 - Ejecutar simulador con 16 marcos, tamaño 8, y modo verbose:
 ```bash
-make run-sim ARGS="16 8 --verbose simulador/trace1.txt"
+make run-sim ARGS="16 8 --verbose trace1.txt"
 ```
 - Ejecutar barrera:
+```bash
+make run-barrera
+```
+- Ejecutar todas las pruebas:
+```bash
+make test
+```
 ```bash
 make run-barrera
 ```

@@ -19,45 +19,58 @@ Algunas de sus características principales son:
 ## Estructura del proyecto
 ```
 .
-├── Readme.md
-├── include
-│   └── .h
+├── README.md
+├── barrera/
+│   ├── barrera
+│   └── barrera_reutilizable.c
+├── simulador/
+│   ├── sim
+│   └── simulador_memoria_virtual.c
 ├── makefile
-├── obj
-└── src
-    └── main.c 
+└── (otros archivos y carpetas de apoyo)
 ```
 
 
-## Compilación, ejecución y uso.
-#### Compilación (sin Makefile)
-Para compilación 
-```
 gcc src/main.c -o main 
-```
-Para ejecución 
-```
-./main
-```
+## Compilación y ejecución
 
-#### Compilación (Con Makefile)
-Solo para compilación
-```
+Se proporciona un `Makefile` que compila y ejecuta los dos programas principales del repositorio: la `barrera` y el `simulador` de memoria.
+
+Compilar ambos programas:
+```bash
 make compile
 ```
-Solo para ejecución
+
+Ejecutar el simulador (compila automáticamente si es necesario):
+```bash
+make run-sim ARGS="<Nmarcos> <tamaño_página> [--verbose] <ruta_traza>"
+# ejemplo:
+make run-sim ARGS="8 4096 simulador/trace2.txt"
 ```
-make run
+
+Ejecutar la barrera:
+```bash
+make run-barrera ARGS="<args_para_barrera>"
 ```
-Para eliminar el ejecutable generado y los archivos de tipo .o en la carpeta 'obj'
-```
+
+Limpiar binarios generados:
+```bash
 make clean
 ```
- 
-#### Modo de Uso.
-- Sintaxis Básica: ---- , algunos ejemplos de uso:
-  * 
 
+#### Ejemplos rápidos
+- Ejecutar simulador con 8 marcos y tamaño de página 4096:
+```bash
+make run-sim ARGS="8 4096 simulador/trace2.txt"
+```
+- Ejecutar simulador con 16 marcos, tamaño 8, y modo verbose:
+```bash
+make run-sim ARGS="16 8 --verbose simulador/trace1.txt"
+```
+- Ejecutar barrera:
+```bash
+make run-barrera
+```
 
 ## Implementación de Funciones.
 #### Función main(): Flujo principal
@@ -72,15 +85,8 @@ Sirve .
 **Métricas medidas:** 
  * 
 
-### Modo de uso.
-***Modo Básico***
-```
-
-```
-Ejemplo:
-```
-
-```
+### Modo de uso
+Use los objetivos `run-sim` y `run-barrera` para integrarlos en scripts o pruebas automatizadas; el menú `make run` es útil para ejecución manual.
 
 
 

@@ -1,32 +1,35 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Iinclude
-LDFLAGS = -lreadline
-SRCDIR = src
-OBJDIR = obj
-SOURCES = $(SRCDIR)/Main.c #$(SRCDIR)/navegacion.c $(SRCDIR)/Comando_personalizado.c $(SRCDIR)/Comando_pipes.c
-OBJECTS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SOURCES))
-TARGET = shell
+CFLAGS = -Wall -Wextra -g
 
-# Crear carpeta obj si no existe
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
+SIM_DIR = simulador
+BARR_DIR = barrera
 
-# Regla principal: compilar todos los objetos y luego enlazar
-compile: $(TARGET)
+SIM_SRC = $(SIM_DIR)/simulador_memoria_virtual.c
+BARR_SRC = $(BARR_DIR)/barrera_reutilizable.c
 
-$(TARGET): $(OBJECTS)
-	$(CC) -o $@ $^ $(LDFLAGS)
+SIM_BIN = $(SIM_DIR)/sim
+BARR_BIN = $(BARR_DIR)/barrera
 
-# Compilar cada .c a .o, asegurando que obj exista
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+.PHONY: all compile build-sim build-barrera run-sim run-barrera clean
 
-# Regla: correr el programa
-run: $(TARGET)
-	./$(TARGET)
+all: compile
 
-# Limpiar archivos compilados
+compile: build-sim build-barrera
+
+build-sim:
+	@echo "Compilando simulador..."
+	$(CC) $(CFLAGS) $(SIM_SRC) -o $(SIM_BIN)
+
+build-barrera:
+	@echo "Compilando barrera..."
+	$(CC) $(CFLAGS) $(BARR_SRC) -o $(BARR_BIN)
+
+run-sim: build-sim
+	@cd $(SIM_DIR) && ./sim $(ARGS)
+
+run-barrera: build-barrera
+	@cd $(BARR_DIR) && ./barrera $(ARGS)
+
 clean:
-	rm -rf $(OBJDIR) $(TARGET)
-
-.PHONY: compile run clean
+	@echo "Limpiando binarios..."
+	-rm -f $(SIM_BIN) $(BARR_BIN)

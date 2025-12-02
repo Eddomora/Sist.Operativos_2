@@ -91,6 +91,3 @@ make run-barrera
 ```bash
 make test
 ```
-```bash
-make run-barrera
-```

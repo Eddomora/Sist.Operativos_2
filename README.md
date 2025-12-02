@@ -21,7 +21,6 @@ Este repositorio contiene la solución a la Tarea 2 del curso de Sistemas Operat
 ```text
 .
 ├── README.md                   # Documentación general
-├── Informe.pdf                 # Análisis de resultados
 ├── Makefile                    # Script de automatización
 ├── barrera/                    # Directorio Parte I
 │   └── barrera_reutilizable.c

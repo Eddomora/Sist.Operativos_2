@@ -27,8 +27,8 @@ Este repositorio contiene la solución a la Tarea 2 del curso de Sistemas Operat
 │   └── barrera_reutilizable.c
 └── simulador/                  # Directorio Parte II
     ├── simulador_memoria_virtual.c
-    ├── trace1.txt              # Traza (Páginas de 8 bytes)
-    └── trace2.txt              # Traza (Páginas de 4096 bytes)
+    ├── trace1.txt             
+    └── trace2.txt              # Trazas con direcciones virtuales para analizar
 ```
 
 ## 🛠️ Instrucciones de Compilación
@@ -61,7 +61,7 @@ make run-sim ARGS="8 4096 trace2.txt"
 
 Ejecutar la barrera:
 ```bash
-make run-barrera ARGS="<args_para_barrera>"
+make run-barrera 
 ```
 
 Ejecutar todas las pruebas automatizadas:
@@ -94,11 +94,3 @@ make test
 ```bash
 make run-barrera
 ```
-
-## Implementación de Funciones.
-
-### Modo de uso
-Use los objetivos `run-sim` y `run-barrera` para integrarlos en scripts o pruebas automatizadas; el menú `make run` es útil para ejecución manual.
-
-
-
